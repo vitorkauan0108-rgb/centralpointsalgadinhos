@@ -1,0 +1,688 @@
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --rosa: #ffb6c1;
+  --rosa-escuro: #ff8da1;
+  --branco: #ffffff;
+  --cinza-claro: #f9f9f9;
+  --texto: #4a4a4a;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: var(--branco);
+  color: var(--texto);
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background: var(--branco);
+  border-bottom: 2px solid var(--rosa);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--rosa-escuro);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--texto);
+  font-weight: 550;
+}
+
+/* Seção Hero (Banner Principal) */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 25px 10%;
+  background-color: var(--rosa);
+  color: var(--branco);
+}
+
+.hero-text {
+  flex: 1;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.hero-banner {
+  flex: 1;
+  text-align: center;
+}
+.hero-banner img {
+  width: 80%;
+  border-radius: 50%;
+  border: 10px solid var(--rosa);
+}
+
+.btn-principal {
+  text-decoration: none; /* Tira o sublinhado */
+  display: inline-block; /* Permite que as margens funcionem direito */
+  margin-top: 20px; /* Dá o espaço que você quer da frase de cima */
+
+  /* Mantenha o resto das suas cores e padding que já estão aí */
+  background-color: #ffffff;
+  color: #ffb3c1;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+/* Cards de Produtos */
+.produtos {
+  padding: 20px 10%;
+  text-align: center;
+}
+
+.grid-produtos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--cinza-claro);
+  padding: 20px;
+  border-radius: 20px;
+  width: 170px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-add {
+  background: var(--rosa-escuro);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+footer {
+  background: var(--rosa-escuro);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+/* Carrinho Escondido à Direita */
+#carrinho-lateral {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Começa fora da tela */
+  width: 350px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: 0.4s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  #carrinho-lateral {
+    /* ... suas outras configurações (width, right, etc) ... */
+
+    height: 100vh; /* Garante que ele ocupe a altura toda da tela */
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+  }
+}
+
+/* Quando abrir, ele vem para a posição 0 */
+#carrinho-lateral.aberto {
+  right: 0;
+}
+
+/* Overlay (Fundo escuro) */
+#carrinho-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#carrinho-overlay.visivel {
+  display: block;
+}
+
+/* Deixar o ícone do carrinho clicável lá no topo */
+.carrinho-container {
+  cursor: pointer;
+}
+.item-no-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+#itens-carrinho {
+  max-height: 60vh; /* Define uma altura máxima (60% da tela) */
+  overflow-y: auto; /* Ativa o scroll vertical se passar da altura */
+  padding-right: 5px; /* Espaço para a barra de scroll não ficar em cima do texto */
+}
+
+/* Dica de QA: Estilizar o scroll para ficar bonito no Windows */
+#itens-carrinho::-webkit-scrollbar {
+  width: 6px;
+}
+#itens-carrinho::-webkit-scrollbar-thumb {
+  background-color: #d63384;
+  border-radius: 10px;
+}
+
+.item-no-carrinho .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-no-carrinho .controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-no-carrinho .controles button {
+  background: #ffb3c1;
+  border: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+#carrinho-lateral {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Começa escondido */
+  width: 350px;
+  height: 100vh; /* Altura total da tela */
+  background-color: #fff5f7;
+  transition: 0.4s ease;
+  z-index: 1000;
+
+  /* AS TRÊS LINHAS MÁGICAS PARA O BOTÃO NÃO SUMIR: */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Garante que nada escape da lateral */
+}
+
+.carrinho-header h2 {
+  color: #d63384; /* Rosa mais forte para o título */
+  font-size: 1.5rem;
+}
+.item-no-carrinho {
+  background: white;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-no-carrinho strong {
+  display: block;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.item-no-carrinho span {
+  color: #888;
+  font-size: 0.9rem;
+}
+.controles button {
+  background-color: #ffb3c1 !important;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%; /* Deixa redondo */
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.controles button:hover {
+  background-color: #ff8fa3 !important;
+}
+
+.controles span {
+  font-weight: bold;
+  color: #333;
+  min-width: 20px;
+  text-align: center;
+}
+.carrinho-footer {
+  padding-top: 20px;
+  border-top: 2px solid #ffdae1;
+}
+
+.total-container {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #d63384;
+}
+
+#finalizar-compra {
+  background-color: #25d366; /* Verde WhatsApp */
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px; /* Estilo pílula igual ao "Ver Cardápio" */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+  transition: 0.3s;
+}
+
+#finalizar-compra:hover {
+  transform: scale(1.02);
+  background-color: #1ebe57;
+}
+.fechar-carrinho {
+  background: #ffdae1;
+  color: #d63384;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+.kits-festa {
+  padding: 30px 0;
+  background-color: #fff0f3; /* Fundo rosinha para separar das coxinhas */
+  text-align: center;
+}
+
+.kit-card {
+  border: 2px solid #ffb3c1 !important; /* Borda mais grossa para o Kit */
+}
+
+.descricao {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+/* Remove as setinhas padrão do input de número */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Para Firefox */
+}
+
+.input-qtd {
+  width: 50px;
+  height: 35px;
+  text-align: center;
+  border: 1px solid #ffb3c1;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: #444;
+  outline: none; /* Tira aquela borda azul ao clicar */
+}
+
+.input-qtd:focus {
+  border: 2px solid #ff4d6d; /* Cor de destaque quando está digitando */
+}
+/* Garante que o conteúdo do card fique em coluna */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 10px; /* Dá um espaço padrão entre os itens */
+}
+
+/* Organiza o seletor de quantidade */
+.quantidade-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+/* Estilo dos botões + e - */
+.btn-qtd {
+  background-color: #ffb3c1;
+  border: none;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* O botão Adicionar agora ocupa a largura quase toda para não fugir */
+.btn-add {
+  width: 100%;
+  max-width: 150px;
+  padding: 10px;
+  background-color: #ffb3c1;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-remover {
+  background: none !important; /* Tira o fundo rosa */
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 5px;
+  transition: 0.2s;
+}
+
+.btn-remover:hover {
+  transform: scale(1.2); /* Dá um zoomzinho ao passar o mouse */
+}
+.rodape-principal {
+  background-color: #ffdae1; /* Rosa claro */
+  color: #444;
+  padding: 40px 20px 20px 20px;
+  margin-top: 50px;
+  font-family: sans-serif;
+  border-top: 3px solid #ffb3c1;
+}
+
+.rodape-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.rodape-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.rodape-col h3,
+.rodape-col h4 {
+  color: #d63384;
+  margin-bottom: 15px;
+}
+
+.rodape-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rodape-col ul li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.redes-sociais a {
+  display: inline-block;
+  margin-right: 15px;
+  color: #d63384;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.rodape-direitos {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ffb3c1;
+  font-size: 0.8rem;
+  color: #777;
+}
+/* Define a animação */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplica nos cards */
+.card {
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+/* Faz cada card aparecer um pouquinho depois do outro */
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Sobe um pouquinho */
+  box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2); /* Sombra rosa suave */
+}
+
+/* Efeito no botão de adicionar */
+.btn-add {
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.btn-add:active {
+  transform: scale(0.95); /* Efeito de "apertar" o botão */
+}
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.shake-anim {
+  animation: shake 0.4s ease;
+}
+/* Estado inicial: invisível e um pouco abaixo */
+.revelar {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Estado final: visível e na posição certa */
+.revelar-ativo {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Configurações apenas para Celular (telas menores que 768px) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Coloca logo em cima e menu embaixo */
+    padding: 15px;
+    gap: 10px;
+  }
+
+  nav ul {
+    gap: 10px;
+    font-size: 0.9rem; /* Diminui um pouco a letra do menu */
+  }
+
+  .carrinho-container {
+    font-size: 0.85rem;
+    position: absolute; /* Joga o carrinho pro cantinho */
+    top: 15px;
+    right: 15px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    margin-right: 50px; /* Dá espaço pro carrinho não bater nela */
+  }
+}
+@media (max-width: 768px) {
+  .grid-produtos {
+    grid-template-columns: 1fr; /* Um card por linha no celular */
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%; /* Card ocupa a largura quase toda */
+    max-width: none;
+  }
+
+  /* Ajuste específico para os Kits Festa */
+  .kits-festa {
+    padding: 20px 10px;
+  }
+
+  .kit-card {
+    margin: 0;
+    width: 100%;
+  }
+}
+/* Estilo da Logo */
+/* Container da Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #d63384;
+  cursor: pointer;
+  gap: 5px; /* Espaço entre as partes */
+}
+
+/* O texto que vai sumir (CP) */
+.sigla {
+  display: inline-block;
+  transition: all 0.4s ease;
+  max-width: 50px; /* Tamanho aproximado do CP */
+  opacity: 1;
+}
+
+/* O texto que vai aparecer (Central Point) */
+.nome-completo {
+  display: inline-block;
+  max-width: 0; /* Começa zerado */
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.5s ease-out;
+}
+
+/* MÁGICA AO PASSAR O MOUSE */
+.logo:hover .sigla {
+  max-width: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+.logo:hover .nome-completo {
+  max-width: 300px; /* Largura suficiente para o nome todo */
+  opacity: 1;
+}
+
+.sigla,
+.nome-completo {
+  color: #ff4d6d;
+}
+.input-entrega {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  box-sizing: border-box;
+}
+.input-entrega:focus {
+  border-color: #d63384;
+  outline: none;
+}
+#itens-carrinho {
+  flex: 1; /* Faz a lista ocupar o máximo de espaço possível no meio */
+  overflow-y: auto; /* Cria o scroll apenas aqui dentro */
+  padding: 15px;
+}
+
+.carrinho-footer {
+  padding: 20px;
+  background-color: white;
+  border-top: 2px solid #eee;
+  /* Isso garante que o rodapé nunca saia do lugar */
+  flex-shrink: 0;
+}
