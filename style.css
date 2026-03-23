@@ -686,3 +686,30 @@ input[type="number"] {
   /* Isso garante que o rodapé nunca saia do lugar */
   flex-shrink: 0;
 }
+#catalogo-salgadinhos {
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item {
+  width: 150px;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 20px; /* bordas bem arredondadas */
+  border: 1px solid #e9bad2; /* borda rosa */
+  box-shadow: 0 0 15px #f0c9ee; /* brilho suave rosa ao redor */
+  padding: 5px; /* espaço entre a imagem e a borda */
+}
+
+.item p {
+  margin-top: 8px;
+  font-weight: bold;
+}
