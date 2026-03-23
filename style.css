@@ -18,11 +18,10 @@ body {
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 20px;
-  background: var(--branco);
-  border-bottom: 2px solid var(--rosa);
+  gap: 30px;
 }
 
 .logo {
@@ -35,6 +34,7 @@ nav ul {
   display: flex;
   list-style: none;
   gap: 20px;
+  justify-content: center;
 }
 
 nav a {

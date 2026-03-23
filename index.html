@@ -16,9 +16,9 @@
 </div>
       <nav>
         <ul>
-          <li><a href="#kits">Congelados🧊</a></li>
-           <li><a href="#kits">Refrigerantes🍹</a></li>
-            <li><a href="#variados">Variados♨️</a></li>
+          <li><a href="#cardapio">Congelados</a></li>
+          <li><a href="#Variados">Variados</a></li>
+          <li><a href="#refrigerantes">Refrigerantes</a></li>
         </ul>
       </nav>
     <div class="carrinho-container" onclick="toggleCarrinho()" style="cursor: pointer;">
@@ -46,222 +46,15 @@
         </div>
       </section>
 
+    
+
       <section class="produtos revelar" id="cardapio">
-        <h2>Os Mais Pedidos</h2>
-        <div class="grid-produtos">
-
-          <div class="card">
-            <img src="coxinha.avif" alt="Coxinha" />
-            <h3>Coxinha de Frango</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Coxinha" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
-           <div class="card">
-            <img src="risolis-de-carne-moida-servido-com-molho-de-pimenta-scaled.jpg" alt="Carne" />
-            <h3> Carne </h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Carne" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
-           <div class="card">
-            <img src="salsicha.jpg" alt="Salsicha" />
-            <h3>Salsicha</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Salsicha" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
-           <div class="card">
-            <img src="calabresa.jpg" alt="Calabresa" />
-            <h3>Calabresa</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Calabresa" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
-           <div class="card">
-            <img src="alho.jpg" alt=" Queijo com Alho" />
-            <h3>Queijo com Alho</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Queijo com Alho" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
- <div class="card">
-            <img src="presunto.jpg" alt="Queijo com Presunto" />
-            <h3>Queijo com Presunto</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Queijo com Presunto" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
-
-          <div class="card">
-            <img src="quibe.jpg" alt="Kibe" />
-            <h3>Kibe</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Kibe" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-
-          <div class="card">
-            <img src="bolinhadequeijo.png.avif" alt="Queijo" />
-            <h3>Bolinha de Queijo</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button
-              class="btn-add"
-              data-nome="Bolinha de Queijo"
-              data-preco="0.60"
-            >
-              Adicionar
-            </button>
-          </div>
-
-          <div class="card">
-            <img src="camaraoo.avif" alt="Camarão" />
-            <h3>Camarão</h3>
-            <p class="preco">R$ 0,60 </p>
-            <div class="quantidade-container">
-              <button
-                class="btn-qtd"
-                type="button"
-                onclick="mudarQtd(this, -1)"
-              >
-                -
-              </button>
-              <input type="number" class="input-qtd" value="1" min="1" />
-              <button class="btn-qtd" type="button" onclick="mudarQtd(this, 1)">
-                +
-              </button>
-            </div>
-            <button class="btn-add" data-nome="Camarão" data-preco="0.60">
-              Adicionar
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="produtos revelar" id="kits">
         <h2>Congelados 🧊</h2>
         <div class="grid-produtos">
           <div class="card kit-card">
             <div class="selo-oferta">Mais Popular</div>
             <h3>Salgadinhos Congelados</h3>
-            <p class="descricao">100 Salgadinhos variados</p>
+            <p class="descricao">100 Salgadinhos</p>
              <p class="descricao">Escolher sabor ao finalizar</p>
             <p class="preco">R$ 30,00</p>
             <div class="quantidade-container">
@@ -316,7 +109,7 @@
       </section>
     </main>
 
-     <section class="produtos revelar" id="variados">
+     <section class="produtos revelar" id="Variados">
         <h2>Variados fritos na hora ♨️</h2>
         <div class="grid-produtos">
           <div class="card kit-card">
