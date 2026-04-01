@@ -185,6 +185,9 @@ function finalizarPedido() {
   // Se o formulário estiver oculto, mostra ele primeiro
   if (divDados.style.display === "none") {
     divDados.style.display = "block";
+    // Muda o texto do botão para o cliente saber o próximo passo!
+    document.getElementById("finalizar-compra").innerText =
+      "Confirmar e Enviar Pedido";
     return;
   }
 

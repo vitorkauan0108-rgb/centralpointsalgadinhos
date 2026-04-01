@@ -676,6 +676,7 @@ input[type="number"] {
   flex: 1; /* Faz a lista ocupar o máximo de espaço possível no meio */
   overflow-y: auto; /* Cria o scroll apenas aqui dentro */
   padding: 15px;
+  min-height: 0; /* Garante que a lista encolha para dar espaço ao formulário */
 }
 
 .carrinho-footer {
@@ -685,6 +686,20 @@ input[type="number"] {
   /* Isso garante que o rodapé nunca saia do lugar */
   flex-shrink: 0;
 }
+
+/* Formulário de entrega com rolagem para nunca empurrar o botão de finalizar para fora da tela */
+#dados-entrega {
+  max-height: 40vh; /* Ocupa no máximo 40% da tela */
+  overflow-y: auto; /* Permite rolar os campos de endereço no celular */
+}
+#dados-entrega::-webkit-scrollbar {
+  width: 6px;
+}
+#dados-entrega::-webkit-scrollbar-thumb {
+  background-color: #ffb3c1;
+  border-radius: 10px;
+}
+
 #catalogo-salgadinhos {
   text-align: center;
 }
