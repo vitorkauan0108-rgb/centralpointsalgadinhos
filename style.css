@@ -211,7 +211,8 @@ footer {
   right: -120%; /* Começa escondido (aumentado para esconder a sombra) */
   width: 85%; /* Ocupa 100% no celular... */
   max-width: 350px; /* ...mas trava em 350px no PC */
-  height: 100vh; /* Altura total da tela */
+  height: 100vh;
+  height: 100dvh; /* Altura total da tela */
   background-color: #fff5f7;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transition: 0.4s ease;
@@ -275,8 +276,12 @@ footer {
   text-align: center;
 }
 .carrinho-footer {
-  padding-top: 20px;
-  border-top: 2px solid #ffdae1;
+  padding: 20px;
+  /* Adiciona um espaço extra embaixo apenas se o celular tiver a barra de navegação */
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  background-color: white;
+  border-top: 2px solid #eee;
+  flex-shrink: 0;
 }
 
 .total-container {
