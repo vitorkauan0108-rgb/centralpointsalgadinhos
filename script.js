@@ -195,18 +195,32 @@ function finalizarPedido() {
     'input[name="tipo-entrega"]:checked',
   ).value;
 
-  // Validação básica de QA
-  if (!nome || !horario) {
-    alert("Por favor, preencha seu nome e o horário desejado!");
-    return;
+  const dataInput = document.getElementById("data-agendamento").value;
+  let dataFinalFormatada = "Não agendado";
+
+  // Só tenta formatar se o usuário tiver escolhido uma data no calendário
+  if (dataInput && dataInput.includes("T")) {
+    const partes = dataInput.split("T");
+    const dataBruta = partes[0]; // AAAA-MM-DD
+    const horaAgendada = partes[1]; // HH:MM
+
+    const [ano, mes, dia] = dataBruta.split("-");
+    dataFinalFormatada = `${dia}/${mes}/${ano} às ${horaAgendada}`;
+  } else if (dataInput) {
+    // Caso o navegador mande apenas a data por algum motivo
+    const [ano, mes, dia] = dataInput.split("-");
+    dataFinalFormatada = `${dia}/${mes}/${ano}`;
   }
+  // ----------------------------------------------
 
   let mensagem = `*Novo Pedido - Central Point Salgadinhos* 🥟%0A%0A`;
   mensagem += `*Cliente:* ${nome}%0A`;
   mensagem += `*Opção:* ${tipoEntrega === "entrega" ? "🛵 Entrega" : "🏪 Retirada no Local"}%0A`;
-  mensagem += `*Horário:* ${horario}%0A%0A`;
 
-  // Se for entrega, valida e adiciona o endereço
+  mensagem += `*Agendamento:* ${dataFinalFormatada}%0A`;
+
+  mensagem += `*Horário desejado:* ${horario}%0A%0A`;
+
   if (tipoEntrega === "entrega") {
     const rua = document.getElementById("endereco-cliente").value;
     const bairro = document.getElementById("bairro-cliente").value;
@@ -232,7 +246,6 @@ function finalizarPedido() {
   window.open(`https://wa.me/${telefone}?text=${mensagem}`, "_blank");
 }
 
-// Função para esconder campos de endereço se for retirada
 window.ajustarCampos = function (tipo) {
   const campos = document.getElementById("campos-endereco");
   campos.style.display = tipo === "retirada" ? "none" : "block";
@@ -243,8 +256,6 @@ window.removerItem = function (index) {
   atualizarInterface(); // Atualiza a tela
 };
 
-// Configura o clique no ícone do topo para abrir o carrinho
-// Função que vigia o scroll da página
 const observador = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -258,7 +269,6 @@ const observador = new IntersectionObserver(
   },
 );
 
-// Manda o observador vigiar todos os elementos com a classe 'revelar'
 document.querySelectorAll(".revelar").forEach((secao) => {
   observador.observe(secao);
 });

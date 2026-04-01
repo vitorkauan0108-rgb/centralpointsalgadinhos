@@ -101,6 +101,7 @@ nav a {
   padding: 20px;
   border-radius: 20px;
   width: 170px;
+  box-sizing: border-box;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s;
 }
@@ -131,29 +132,6 @@ footer {
   padding: 20px;
   margin-top: 50px;
 }
-/* Carrinho Escondido à Direita */
-#carrinho-lateral {
-  position: fixed;
-  top: 0;
-  right: -400px; /* Começa fora da tela */
-  width: 350px;
-  height: 100%;
-  background-color: white;
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  transition: 0.4s ease;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  #carrinho-lateral {
-    /* ... suas outras configurações (width, right, etc) ... */
-
-    height: 100vh; /* Garante que ele ocupe a altura toda da tela */
-    display: flex;
-    flex-direction: column; /* Organiza os itens em coluna */
-  }
-}
-
 /* Quando abrir, ele vem para a posição 0 */
 #carrinho-lateral.aberto {
   right: 0;
@@ -226,13 +204,16 @@ footer {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
+/* Carrinho Escondido à Direita */
 #carrinho-lateral {
   position: fixed;
   top: 0;
-  right: -100%; /* Começa escondido */
-  width: 350px;
+  right: -120%; /* Começa escondido (aumentado para esconder a sombra) */
+  width: 85%; /* Ocupa 100% no celular... */
+  max-width: 350px; /* ...mas trava em 350px no PC */
   height: 100vh; /* Altura total da tela */
   background-color: #fff5f7;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   transition: 0.4s ease;
   z-index: 1000;
 
@@ -240,11 +221,15 @@ footer {
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Garante que nada escape da lateral */
+  box-sizing: border-box;
 }
 
 .carrinho-header h2 {
-  color: #d63384; /* Rosa mais forte para o título */
+  color: #d63384;
   font-size: 1.5rem;
+  text-align: center; /* A mágica para centralizar o texto */
+  width: 100%; /* Garante que ele pegue a largura toda do header para centralizar certinho */
+  margin-top: 10px; /* Dá um respiro caso ele esteja muito colado no topo */
 }
 .item-no-carrinho {
   background: white;
@@ -594,14 +579,15 @@ input[type="number"] {
 }
 @media (max-width: 768px) {
   .grid-produtos {
-    grid-template-columns: 1fr; /* Um card por linha no celular */
+    flex-direction: column; /* Corrige a lista para ficar em coluna */
+    align-items: center;
     padding: 10px;
     gap: 20px;
   }
 
   .card {
-    width: 100%; /* Card ocupa a largura quase toda */
-    max-width: none;
+    width: 90%; /* Deixa uma margem respirável nas laterais */
+    max-width: 350px;
   }
 
   /* Ajuste específico para os Kits Festa */
@@ -612,6 +598,19 @@ input[type="number"] {
   .kit-card {
     margin: 0;
     width: 100%;
+  }
+
+  /* Adaptação do Banner Principal (Hero) para Celular */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 5%;
+  }
+  .hero-banner {
+    margin-top: 25px;
+  }
+  .hero-text h1 {
+    font-size: 2.2rem;
   }
 }
 /* Estilo da Logo */
@@ -666,7 +665,7 @@ input[type="number"] {
   margin-bottom: 8px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 0.85rem;
+  font-size: 16px; /* 16px evita o zoom automático chato no iPhone */
   box-sizing: border-box;
 }
 .input-entrega:focus {

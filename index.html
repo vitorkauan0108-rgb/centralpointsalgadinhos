@@ -35,7 +35,7 @@
             Os melhores salgadinhos da região, sempre fresquinhos para você.
           </p>
           <p>💳 Aceitamos todas formas de pagamento.</p>
-          <p></p>🏍️ Entregas via aplicativos de entrega e retirada no local. Faça seu pedido agora mesmo!</p>
+          <p>🏍️ Entregas via aplicativos de entrega e retirada no local. Faça seu pedido agora mesmo!</p>
           <a href="#cardapio" class="btn-principal">Ver Cardápio</a>
         </div>
         <div class="hero-banner">
@@ -47,7 +47,7 @@
       </section>
 
       <section id="catalogo-salgadinhos">
-  <h2>Catálogo de Salgadinhos 🗒️</h2>
+  <h2>Catálogo🗒️</h2>
   <div class="grid">
     <div class="item">
       <img src="coxinha.avif" alt="Coxinha">
@@ -65,10 +65,11 @@
       <img src="bolinhadequeijo.png.avif" alt="Bolinha de Queijo">
       <p>Bolinha de Queijo</p>
     </div>
+  </div>
   </section>
 
   
-      <section id="catalogo-salgadinhos">
+      <section id="catalogo-salgadinhos-2">
   <div class="grid">
     <div class="item">
       <img src="risolis-de-carne-moida-servido-com-molho-de-pimenta-scaled.jpg" alt="Risolis de Carne">
@@ -90,6 +91,7 @@
       <img src="camaraoo.avif" alt="Camarão">
       <p>Camarão</p>
     </div>
+  </div>
   </section>
 
     
@@ -377,53 +379,10 @@
                 <input type="text" id="bairro-cliente" placeholder="Bairro" class="input-entrega">
                 <input type="text" id="referencia-cliente" placeholder="Ponto de Referência" class="input-entrega">
             </div>
-
-            <div style="display: flex; align-items: center; gap: 5px;">
-                <label style="font-size: 0.7rem; color: #666;">Horário:</label>
-                <input type="time" id="horario-entrega" class="input-entrega" style="margin-bottom: 0;">
-            </div>
-        </div>
-
-        <button id="finalizar-compra" onclick="finalizarPedido()">
-            Finalizar Pedido via WhatsApp
-        </button>
-    </div>
-</aside><aside id="carrinho-lateral">
-    <div class="carrinho-header">
-        <h2>Seu Carrinho</h2>
-        <button onclick="toggleCarrinho()" class="fechar-carrinho">&times;</button>
-    </div>
-
-    <div id="itens-carrinho">
-        <p class="carrinho-vazio">Seu carrinho está vazio :(</p>
-    </div>
-
-    <div class="carrinho-footer">
-        <div class="total-container">
-            <strong>Total:</strong>
-            <span id="valor-total">R$ 0,00</span>
-        </div>
-
-        <div id="dados-entrega" style="display: none; padding: 10px; background: #fff5f7; border-radius: 8px; margin-bottom: 10px; text-align: left;">
-            <h4 style="color: #d63384; margin-bottom: 8px; font-size: 0.9rem;">Como deseja receber?</h4>
-            
-            <div style="display: flex; gap: 15px; margin-bottom: 10px;">
-                <label style="font-size: 0.8rem; cursor:pointer;">
-                    <input type="radio" name="tipo-entrega" value="entrega" checked onclick="ajustarCampos('entrega')"> Entrega 🛵
-                </label>
-                <label style="font-size: 0.8rem; cursor:pointer;">
-                    <input type="radio" name="tipo-entrega" value="retirada" onclick="ajustarCampos('retirada')"> Retirada 🏪
-                </label>
-            </div>
-
-            <input type="text" id="nome-cliente" placeholder="Seu Nome" class="input-entrega">
-            
-            <div id="campos-endereco">
-                <input type="text" id="endereco-cliente" placeholder="Rua e Número" class="input-entrega">
-                <input type="text" id="bairro-cliente" placeholder="Bairro" class="input-entrega">
-                <input type="text" id="referencia-cliente" placeholder="Ponto de Referência" class="input-entrega">
-            </div>
-
+<div id="agendamento-secao" style="margin-top: 10px;">
+  <h4 style="color: #d63384; margin-bottom: 8px; font-size: 0.9rem;">Agendar para outro dia?</h4>
+  <input type="date" id="data-agendamento" class="input-entrega" style="margin-bottom: 10px;">
+</div>
             <div style="display: flex; align-items: center; gap: 5px;">
                 <label style="font-size: 0.7rem; color: #666;">Horário:</label>
                 <input type="time" id="horario-entrega" class="input-entrega" style="margin-bottom: 0;">
@@ -436,10 +395,8 @@
     </div>
 </aside>
 
-   <script src="config.js"></script>
+    <script src="config.js"></script>
     <script src="script.js"></script>
 
-  </body>
-</html>
   </body>
 </html>
