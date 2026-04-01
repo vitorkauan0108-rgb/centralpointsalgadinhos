@@ -698,10 +698,12 @@ input[type="number"] {
 
 .item {
   width: 150px;
+  text-align: center; /* Garante que o texto fique no meio em qualquer catálogo */
 }
 
 .item img {
   width: 100%;
+  box-sizing: border-box; /* Impede que a borda e o padding empurrem a imagem para fora do centro */
   border-radius: 20px; /* bordas bem arredondadas */
   border: 1px solid #e9bad2; /* borda rosa */
   box-shadow: 0 0 15px #f0c9ee; /* brilho suave rosa ao redor */
