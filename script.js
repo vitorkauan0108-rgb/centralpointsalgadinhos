@@ -12,6 +12,10 @@ function toggleCarrinho() {
 window.mudarQtd = function (botao, delta) {
   const input = botao.parentElement.querySelector(".input-qtd");
   let valorAtual = parseInt(input.value);
+
+  // Se o cliente apagou o número do input, evita o erro e considera como 0
+  if (isNaN(valorAtual)) valorAtual = 0;
+
   let novoValor = valorAtual + delta;
 
   if (novoValor < 1) novoValor = 1;
@@ -19,29 +23,23 @@ window.mudarQtd = function (botao, delta) {
 };
 
 // 3. Capturar clique no botão "Adicionar"
+// 3. Capturar clique no botão "Adicionar"
 document.querySelectorAll(".btn-add").forEach((botao) => {
   botao.addEventListener("click", () => {
     const nome = botao.getAttribute("data-nome");
     const preco = parseFloat(botao.getAttribute("data-preco"));
 
-    // AQUI ESTÁ A MUDANÇA: Pegar o valor do input do card específico
     const card = botao.closest(".card");
     const input = card.querySelector(".input-qtd");
-    const quantidade = parseInt(input.value);
+
+    // CORREÇÃO: Transformamos o valor em número.
+    // Se estiver vazio, o '|| 0' garante que ele vire 0 e não NaN.
+    const quantidade = parseInt(input.value) || 0;
 
     adicionarAoCarrinho(nome, preco, quantidade);
 
-    // Ajusta o reset do visor: se for congelado ou bebida volta para 1, se não volta para 10
-    if (
-      nome.includes("Congelados") ||
-      nome.includes("Refri") ||
-      nome.includes("Guaraná") ||
-      nome.includes("Salgadinhos Variados")
-    ) {
-      input.value = 1;
-    } else {
-      input.value = 1;
-    }
+    // Reset do visor após adicionar
+    input.value = 1;
   });
 });
 
@@ -57,8 +55,10 @@ function adicionarAoCarrinho(nome, preco, quantidade) {
       ? 1
       : 1;
 
-  if (quantidade < minimoParaEsteItem) {
-    alert(`O pedido mínimo para ${nome} é de ${minimoParaEsteItem} unidades.`);
+  if (isNaN(quantidade) || quantidade < minimoParaEsteItem) {
+    alert(
+      `Quantidade inválida! O pedido mínimo para ${nome} é de ${minimoParaEsteItem} unidades.`,
+    );
     return; // Para o código aqui
   }
 
@@ -224,6 +224,8 @@ function finalizarPedido() {
 
   mensagem += `*Horário desejado:* ${horario}%0A%0A`;
 
+  mensagem += `*Referência:* ${document.getElementById("referencia-cliente").value}%0A`;
+
   if (tipoEntrega === "entrega") {
     const rua = document.getElementById("endereco-cliente").value;
     const bairro = document.getElementById("bairro-cliente").value;
@@ -274,4 +276,13 @@ const observador = new IntersectionObserver(
 
 document.querySelectorAll(".revelar").forEach((secao) => {
   observador.observe(secao);
+});
+
+// Garante que o campo nunca fique vazio visualmente
+document.querySelectorAll(".input-qtd").forEach((input) => {
+  input.addEventListener("blur", (e) => {
+    if (e.target.value === "" || parseInt(e.target.value) < 1) {
+      e.target.value = 1;
+    }
+  });
 });
