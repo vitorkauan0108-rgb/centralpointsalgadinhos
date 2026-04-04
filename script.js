@@ -86,6 +86,7 @@ function atualizarInterface() {
   const containerItens = document.getElementById("itens-carrinho");
   const contadorTopo = document.getElementById("contador-carrinho");
   const valorTotal = document.getElementById("valor-total");
+  const avisoSinal = document.getElementById("aviso-sinal");
 
   containerItens.innerHTML = "";
   let total = 0;
@@ -122,6 +123,10 @@ function atualizarInterface() {
 
   contadorTopo.innerText = qtdTotal;
   valorTotal.innerText = `R$ ${total.toFixed(2)}`;
+
+  if (avisoSinal) {
+    avisoSinal.style.display = total > 15 ? "block" : "none";
+  }
 }
 
 // 6. Alterar quantidade DENTRO do carrinho
@@ -246,6 +251,10 @@ function finalizarPedido() {
   });
 
   mensagem += `%0A*Total: R$ ${totalPedido.toFixed(2)}*`;
+
+  if (totalPedido > 15) {
+    mensagem += `%0A%0A_Atenção: Como o pedido superou R$ 15,00, é necessário o pagamento de 50% de sinal (R$ ${(totalPedido / 2).toFixed(2)}) para confirmação._`;
+  }
 
   const telefone = "5521965295921";
   window.open(`https://wa.me/${telefone}?text=${mensagem}`, "_blank");
